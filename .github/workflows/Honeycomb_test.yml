@@ -1,4 +1,4 @@
-name: MATLAB Test on GitHub Actions
+name: MATLAB Honeycomb Test on GitHub Actions
 on: [push, pull_request]
 jobs:
   run-matlab-test:
