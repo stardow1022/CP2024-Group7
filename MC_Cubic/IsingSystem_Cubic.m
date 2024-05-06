@@ -10,7 +10,7 @@ classdef IsingSystem_Cubic
         function obj = IsingSystem_Cubic(spinstate)
             % 构造函数，初始化自旋状态和晶格大小
             % 假设spinstate是一个线性数组
-            L=size(spinstate,1)^(1/3);
+            L=size(spinstate,2)^(1/3);
             obj.spinstate = reshape(spinstate, L, L, L) * 2 - 1;
         end
         function H = get.H(obj)
