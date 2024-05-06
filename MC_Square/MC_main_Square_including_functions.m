@@ -1,12 +1,20 @@
 T=4.5;
 L=3;
 spin0=Initialising_Square(L);
-for i=1:100000
+for i=1:10000
     spin=Sweep_Square(spin0,T);
+    E(i)=spin.H/L^2;
+    M(i)=sum(spin.spinstate,"all")/L^2;
+    M2(i)=spin.M_sq/L^2;
 end
-E=spin.H;
-M=sum(spin.spinstate,"all");
-M2=spin.M_sq;
+figure(1)
+plot(E)
+ylabel('E')
+title('Square')
+figure(2)
+plot(M)
+ylabel('M')
+title('Square')
 %%
 function spin = Initialising_Square(L)
     spin_arr = randi(2,1,L^2)-1;
