@@ -5,7 +5,15 @@ L=3;
 spin0=Initialising_Kagome(L);
 for i=1:10000
     spin=Sweep_Kagome(spin0,T);
+    E(i)=spin.H/3*L^2;
+    M(i)=sum(spin.spinstate,"all")/3*L^2;
+    M2(i)=spin.M_sq/3*L^2;
 end
-E=spin.H;
-M=sum(spin.spinstate,"all");
-M2=spin.M_sq;
+figure(1)
+plot(E)
+ylabel('E')
+title('Kagome')
+figure(2)
+plot(M)
+ylabel('M')
+title('Kagome')
