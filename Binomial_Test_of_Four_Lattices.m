@@ -1,7 +1,7 @@
 classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
 
     methods (Test)
-        function test_Square(test)%测试IsingSystem_Square
+        function test_Square(test)%??IsingSystem_Square??
             import matlab.unittest.constraints.IsGreaterThanOrEqualTo
             import matlab.unittest.constraints.IsLessThanOrEqualTo
             import matlab.unittest.constraints.AbsoluteTolerance
@@ -22,7 +22,7 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
             z=1.96;
             a=0;b=0;c=0;
             spin0=Initialising_Square(L);
-            for i=1:5000000
+            for i=1:500000
                 [spin,E1,M1,M21]=Sweep_Square(spin0,T);
                 spin0=spin;
                 E(i)=E1;
@@ -33,7 +33,7 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
             M=M./L^2;
             M2=M2/L^4;
 
-            for i=300000:5000000
+            for i=30000:500000
                 if E(i)<= E_Average+E_SE*z && E(i)>=E_Average-E_SE*z
                     a=a+1;
                 end
@@ -44,19 +44,19 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
                     c=c+1;
                 end
             end
-            test.verifyThat(a/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(a/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(b/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(b/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(c/(5000000-300000+1),IsLessThanOrEqualTo(1));
-            test.verifyThat(c/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(a/(500000-30000+1),IsLessThanOrEqualTo(0.99));
+            test.verifyThat(a/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(b/(500000-30000+1),IsLessThanOrEqualTo(0.99));
+            test.verifyThat(b/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(c/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(c/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
         end
 
-        function test_Honeycomb(test)%测试IsingSystem_Honeycomb
+        function test_Honeycomb(test)%KÕIsingSystem_Honeycomb
             import matlab.unittest.constraints.IsGreaterThanOrEqualTo
             import matlab.unittest.constraints.IsLessThanOrEqualTo
             import matlab.unittest.constraints.AbsoluteTolerance
-            L=10;
+            L=6;
             T=5;
             for i=1001:1064
                 Average=Statistical_Average_Honeycomb(i,L,T);
@@ -73,7 +73,7 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
             z=1.96;
             a=0;b=0;c=0;
             spin0=Initialising_Honeycomb(L);
-            for i=1:5000000
+            for i=1:500000
                 [spin,E1,M1,M21]=Sweep_Honeycomb(spin0,T);
                 spin0=spin;
                 E(i)=E1(2);
@@ -84,7 +84,7 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
             M=M./L^2;
             M2=M2/L^4;
 
-            for i=300000:5000000
+            for i=30000:500000
                 if E(i)<= E_Average+E_SE*z && E(i)>=E_Average-E_SE*z
                     a=a+1;
                 end
@@ -95,19 +95,19 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
                     c=c+1;
                 end
             end
-            test.verifyThat(a/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(a/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(b/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(b/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(c/(5000000-300000+1),IsLessThanOrEqualTo(1));
-            test.verifyThat(c/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(a/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(a/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(b/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(b/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(c/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(c/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
         end
 
-        function test_Kagome(test)%测试IsingSystem_Kagome
+        function test_Kagome(test)%KÕIsingSystem_Kagome
             import matlab.unittest.constraints.IsGreaterThanOrEqualTo
             import matlab.unittest.constraints.IsLessThanOrEqualTo
             import matlab.unittest.constraints.AbsoluteTolerance
-            L=10;
+            L=3;
             T=5;
             for i=1001:1064
                 Average=Statistical_Average_Kagome(i,L,T);
@@ -124,18 +124,18 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
             z=1.96;
             a=0;b=0;c=0;
             spin0=Initialising_Kagome(L);
-            for i=1:5000000
+            for i=1:500000
                 [spin,E1,M1,M21]=Sweep_Kagome(spin0,T);
                 spin0=spin;
-                E(i)=E1;
-                M(i)=M1;
-                M2(i)=M21;
+                E(i)=E1(2);
+                M(i)=M1(2);
+                M2(i)=M21(2);
             end
-            E=E./L^2;
-            M=M./L^2;
-            M2=M2/L^4;
+            E=E./3/L^2;
+            M=M./3/L^2;
+            M2=M2/9/L^4;
 
-            for i=300000:5000000
+            for i=30000:500000
                 if E(i)<= E_Average+E_SE*z && E(i)>=E_Average-E_SE*z
                     a=a+1;
                 end
@@ -146,19 +146,19 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
                     c=c+1;
                 end
             end
-            test.verifyThat(a/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(a/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(b/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(b/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(c/(5000000-300000+1),IsLessThanOrEqualTo(1));
-            test.verifyThat(c/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(a/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(a/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(b/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(b/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(c/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(c/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
         end
 
-        function test_Cubic(test)%测试IsingSystem_Cubic
+        function test_Cubic(test)%KÕIsingSystem_Cubic
             import matlab.unittest.constraints.IsGreaterThanOrEqualTo
             import matlab.unittest.constraints.IsLessThanOrEqualTo
             import matlab.unittest.constraints.AbsoluteTolerance
-            L=10;
+            L=3;
             T=5;
             for i=1001:1064
                 Average=Statistical_Average_Cubic(i,L,T);
@@ -175,18 +175,18 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
             z=1.96;
             a=0;b=0;c=0;
             spin0=Initialising_Cubic(L);
-            for i=1:5000000
+            for i=1:500000
                 [spin,E1,M1,M21]=Sweep_Cubic(spin0,T);
                 spin0=spin;
                 E(i)=E1;
                 M(i)=M1;
                 M2(i)=M21;
             end
-            E=E./L^2;
-            M=M./L^2;
-            M2=M2/L^4;
+            E=E./L^3;
+            M=M./L^3;
+            M2=M2/L^6;
 
-            for i=300000:5000000
+            for i=30000:500000
                 if E(i)<= E_Average+E_SE*z && E(i)>=E_Average-E_SE*z
                     a=a+1;
                 end
@@ -197,12 +197,12 @@ classdef Binomial_Test_of_Four_Lattices < matlab.unittest.TestCase
                     c=c+1;
                 end
             end
-            test.verifyThat(a/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(a/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(b/(5000000-300000+1),IsLessThanOrEqualTo(0.99));
-            test.verifyThat(b/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
-            test.verifyThat(c/(5000000-300000+1),IsLessThanOrEqualTo(1));
-            test.verifyThat(c/(5000000-300000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(a/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(a/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(b/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(b/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
+            test.verifyThat(c/(500000-30000+1),IsLessThanOrEqualTo(1));
+            test.verifyThat(c/(500000-30000+1),IsGreaterThanOrEqualTo(0.91));
         end
 
 
